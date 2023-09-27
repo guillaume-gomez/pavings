@@ -33,7 +33,11 @@ function App() {
             onChange={(e) => setHeight(parseInt(e.target.value)) }
           />
         </div>
-        <Canvas width={width} height={height} />
+        <Canvas
+          width={width}
+          height={height}
+          toggleFullScreen={() => {}}
+        />
 
       </div>
     </div>
