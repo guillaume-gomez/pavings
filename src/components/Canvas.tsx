@@ -5,10 +5,11 @@ import { renderSquare } from "./pavings/pavingsRenderer";
 interface CanvasProps {
   width: number;
   height: number;
+  background?: string;
   toggleFullScreen: (target: EventTarget) => void;
 }
 
-function Canvas({width, height, toggleFullScreen}: CanvasProps) {
+function Canvas({width, height, toggleFullScreen, background = "#797979"}: CanvasProps) {
   const refCanvas = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -31,7 +32,7 @@ function Canvas({width, height, toggleFullScreen}: CanvasProps) {
       ref={refCanvas}
       width={width}
       height={height}
-      style={{background:"#797979"}}
+      style={{background}}
       onDoubleClick={(event) => toggleFullScreen(event.target)}
     />
   )
