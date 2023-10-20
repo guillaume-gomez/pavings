@@ -25,7 +25,7 @@ export function square(
     context.lineWidth = 10;
 
     context.beginPath();
-    context.rect(x, y, side, side); // rect(x, y, width, height)
+    context.rect(x, y, side-5, side-5); // rect(x, y, width, height)
     context.stroke();
     context.fill();
     context.closePath();
