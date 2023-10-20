@@ -36,7 +36,7 @@ function App() {
         <Canvas
           width={width}
           height={height}
-          background={"red"}
+          background={"blue"}
           toggleFullScreen={() => {}}
         />
 
