@@ -10,3 +10,5 @@ https://www.youtube.com/watch?v=sQMg_EwiUzU
 https://accromath.uqam.ca/2010/01/pavages/
 
 https://spicyyoghurt.com/tutorials/html5-javascript-game-development/draw-on-html5-canvas
+
+https://accromath.uqam.ca/2010/01/pavages/
