@@ -117,21 +117,26 @@ export function hexagone(
 
 // rotation does not work
 export function diamond(
-    canvasWidth: number,
-    canvasHeight: number,
     context : CanvasRenderingContext2D,
-    positions: PositionType,
-    colors: ColorsType,
+    {x, y}: PositionType,
+    {color, outline}: ColorsType,
     side: number
 ) {
-    context.save();
 
-    context.translate(canvasWidth / 2, canvasHeight / 2);
-    context.rotate(Math.PI / 4);
-    square(context, positions, colors, side);
-    context.translate(-(side / 2), -(side / 2));
-
-    context.restore();
+    context.fillStyle   = color;
+    context.strokeStyle = outline;
+    context.lineWidth = 3;
+    context.beginPath();
+    // Start from the top-left point.
+    context.moveTo(x + side/2, y);
+    context.lineTo(x + side, y + side/2);
+    context.lineTo(x + side/2, y + side);
+    context.lineTo(x, y + side/2);
+    context.lineTo(x + side/2, y);
+    // Now fill the shape, and draw the stroke.
+    context.fill();
+    context.stroke();
+    context.closePath();
 
 }
 
