@@ -1,4 +1,4 @@
-import { square, rectangle } from "./index";
+import { square, rectangle, diamond, hexagone } from "./index";
 
 interface OptionInterface {
     width: number;
@@ -43,6 +43,7 @@ function iterateSquare(context : CanvasRenderingContext2D, pavingFunction: pavin
     }
 }
 
+
 export function renderSquare(context : CanvasRenderingContext2D, width: number, height: number) {
     const pavingSize = 32;
     const options : OptionInterface = {
@@ -70,6 +71,41 @@ export function renderRectangle(context : CanvasRenderingContext2D, width: numbe
     }
     function pavingFunction(context: CanvasRenderingContext2D, x : number, y : number) {
         rectangle(context, { x, y }, {color: "red", outline: "green"}, { width: pavingWidth, height: pavingHeight });
+    }
+
+    render(context, pavingFunction, iterateSquareOffset, options);
+}
+
+export function renderHexagone(context : CanvasRenderingContext2D, width: number, height: number) {
+    const pavingSize = 40;
+    //10 is lineHeight
+    // 5 is lineHeight / 2
+
+    const options : OptionInterface = {
+        pavingWidth: pavingSize + 5,
+        pavingHeight: pavingSize + 10,
+        width,
+        height
+    }
+    function pavingFunction(context: CanvasRenderingContext2D, x : number, y : number) {
+        hexagone(context, { x, y }, {color: "red", outline: "green"}, pavingSize);
+    }
+
+    render(context, pavingFunction, iterateSquareOffset, options);
+}
+
+
+export function renderDiamond(context : CanvasRenderingContext2D, width: number, height: number) {
+    const pavingSize = 25;
+
+    const options : OptionInterface = {
+        pavingWidth: pavingSize,
+        pavingHeight: pavingSize,
+        width,
+        height
+    }
+    function pavingFunction(context: CanvasRenderingContext2D, x : number, y : number) {
+        diamond(context, { x, y }, {color: "red", outline: "green"}, pavingSize);
     }
 
     render(context, pavingFunction, iterateSquareOffset, options);
