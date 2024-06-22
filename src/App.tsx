@@ -1,10 +1,17 @@
-import { useState } from "react";
-
+import { useState, useRef } from "react";
+import { useFullscreen } from "rooks";
 import Canvas from "./components/Canvas";
 
 function App() {
   const [width, setWidth] = useState<number>(250);
   const [height, setHeight] = useState<number>(250);
+  const fullscreenContainerRef = useRef<Element>(null);
+  const {
+    isFullscreenAvailable,
+    isFullscreenEnabled,
+    toggleFullscreen,
+  } = useFullscreen({ target: fullscreenContainerRef });
+
   return (
     <div className="bg-neutral">
       <div className="flex flex-col items-center gap-3">
@@ -33,13 +40,14 @@ function App() {
             onChange={(e) => setHeight(parseInt(e.target.value)) }
           />
         </div>
-        <Canvas
-          width={width}
-          height={height}
-          background={"#ddd"}
-          toggleFullScreen={() => {}}
-        />
-
+        <div ref={fullscreenContainerRef}>
+          <Canvas
+            width={width}
+            height={height}
+            background={"#ddd"}
+            toggleFullScreen={toggleFullscreen}
+          />
+        </div>
       </div>
     </div>
   )
